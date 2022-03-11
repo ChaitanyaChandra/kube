@@ -8,3 +8,14 @@ spec:
   containers:
   - name: nginx-container
     image: nginx
+    volumeMounts:
+      - name: chaitanya-volume-mount
+        mountPath: "/etc/non-sensitive-data"
+        readOnly: true
+  volumes:
+    - name: chaitanya-volume
+      configMap:
+        name: chaitu-configmap
+        items:
+          - key: chaituKeyOne
+            path: /usr/share/nginx/html/test.html
