@@ -50,4 +50,55 @@
 * kubectl
   * this is the command line utility through which we can manage the cluster, such as creating, deleting, displaying and updating various k8s objects.
 
-* 
+* namespace
+  * virtual cluster inside k8s cluster
+  * organise resources in namespace
+  * `kubectl create namespace myNameSpaceOne`
+  * `kubectl get namespace`
+  * use case: 
+    * resources grouped in namespace
+      * database, monitoring, elastic stack, nginx ingress namespaces
+    * conflicts: many teams same application
+      * one or more teams working in default namespace
+    * resource sharing: staging and development or Blue/Green Development
+      * staging namespace and dev  namespace use nginx ingress controller and elastic stack namespaces
+    * Access and Resource Limits on Namespace
+      * limit user or team access to the namespace
+      * limit CPU, RAM and storage per namespace.
+  * pod to pod communication 
+    * CNI (container network interface)
+    * flannel plugin
+  * container to container communication(inside container)
+    * using local host (pause container)
+  * pod abstraction
+    * pod is isolated virtual host with its own network namespace
+    * virtual ether network 
+    * pod is a host
+    * max six containers
+    * minimum one container
+    * pause container also called sandbox container `reserves and holds network namespace (nets)`
+  * container runtime interface(CRI)
+    * containerd
+    * docker
+    * cri-o
+  * container network interface(CNI)
+    * flannel plugin
+    * pod network plugin is pre-requisite for joining of workier nodes.
+    * plugin rules: 
+      * Every pod gets its own unique ip address
+      * pods on same node can communicate with that ip address
+      * pods in different node can communicate with that ip address without NAT (network address translation)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
