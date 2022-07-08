@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample7
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+    volumeMounts:
+    - mountPath: /opt
+      name: hostpath-volume
+  volumes:
+  - name: hostpath-volume
+    hostPath:
+      # directory location on host
+      path: /opt/opt-data
+      # this field is optional
+      type: Directory
+#---
+#kind: PersistentVolumeClaim
+#apiVersion: v1
+#metadata:
+#  name: ebs1
+#spec:
+#  #storageClassName: aws-gp2
+#  accessModes:
+#    - ReadWriteOnce
+#  resources:
+#    requests:
+#      storage: 1Gi
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sample8
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+      - mountPath: "/opt"
+        name: ebs1
+  volumes:
+    - name: ebs1
+      awsElasticBlockStore:
+        volumeID: "vol-0ada8ab0039bead6f"
+        fsType: ext4
+#      persistentVolumeClaim:
+#        claimName: ebs1
+
