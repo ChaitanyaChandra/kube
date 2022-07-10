@@ -1,0 +1,44 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ebs1
+spec:
+  storageClassName: aws-gp2
+  accessModes:
+    - ReadWrite
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      volumeMounts:
+      - mountPath: "/opt"
+        name: ebs1
+  volumes:
+    - name: ebs1
+      persistentVolumeClaim:
+        claimName: ebs1
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sample8
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+      - mountPath: "/opt"
+        name: ebs1
+  volumes:
+    - name: ebs1
+      persistentVolumeClaim:
+        claimName: ebs1
