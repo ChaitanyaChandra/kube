@@ -13,5 +13,5 @@ spec:
     kind: DeploymentConfig
     name: {{ .Release.Name }}
   targetCPUUtilizationPercentage: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
-  targetMemoryUtilizationPercentage: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
+#  targetMemoryUtilizationPercentage: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
 {{- end }}
