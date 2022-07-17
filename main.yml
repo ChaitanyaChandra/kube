@@ -1,6 +1,28 @@
 ---
+# kubectl create ns spec-app-ns --dry-run=client -o yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: spec
+  name: spec-app-ns
 ---
+# kubectl create deployment spec --image=chaituchowdary/spec  --replicas=2 -n spec-app-ns --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spec
+  name: spec
+  namespace: spec-app-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spec-app
+  template:
+    metadata:
+      labels:
+        app: spec-app
+    spec:
+      containers:
+        - image: chaituchowdary/spec
+          name: spec
