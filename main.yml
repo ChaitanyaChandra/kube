@@ -44,5 +44,5 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    app: spec-service
+    app: spec-app
   type: ClusterIP
