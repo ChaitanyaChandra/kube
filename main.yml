@@ -38,6 +38,7 @@ metadata:
   labels:
     app: spec-service
   name: spec-service
+  namespace: spec-app-ns
 spec:
   ports:
     - port: 80
