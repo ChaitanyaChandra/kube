@@ -30,3 +30,19 @@ spec:
           name: spec
           ports:
             - containerPort: 8080
+---
+# kubectl create service clusterip spec-service --clusterip="None" -o yaml --dry-run=client
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: spec-service
+  name: spec-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: spec-service
+  type: ClusterIP
