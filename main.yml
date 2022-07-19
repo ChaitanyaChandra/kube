@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
+  labels:an
     app: spec-service
   name: spec-service
   namespace: spec-app-ns
@@ -47,3 +47,4 @@ spec:
   selector:
     app: spec-app
   type: LoadBalancer
+---

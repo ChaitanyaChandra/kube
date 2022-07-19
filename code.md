@@ -80,10 +80,16 @@
 * `kubectl diff`
   * to compare standard input file  and cluster manifest file 
     * `kubectl diff -f main.yaml`
-  * for verbosity 
-    * `kubectl get pods -v 7`
-  * to watch 
-    * `kubectl get pods --watch`
-    * list watchers 
-      * ` netstat -plant | grep kubectl`
-  * 
+* for verbosity 
+  * `kubectl get pods -v 7`
+* to watch 
+  * `kubectl get pods --watch`
+  * list watchers 
+    * ` netstat -plant | grep kubectl`
+
+
+* labels 
+  * reference or link the resource
+  * list with filters using selectors
+* annotations 
+  * more information about resource
